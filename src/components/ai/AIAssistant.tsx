@@ -70,29 +70,29 @@ export function AIAssistant() {
   };
 
   return (
-    <div className="flex flex-col h-[400px] max-h-[60vh]">
-      <div className="flex-1 overflow-y-auto px-2 py-4 space-y-4">
+    <div className="flex flex-col h-[400px] max-h-[60vh] rounded-xl light:glass-card dark:bg-slate-800/30">
+      <div className="flex-1 overflow-y-auto px-3 py-4 space-y-4">
         {messages.map((message, index) => (
           <div
             key={index}
             className={`flex ${
               message.role === "user" ? "justify-end" : "justify-start"
-            }`}
+            } animate-fade-in`}
           >
             <div
-              className={`flex items-start space-x-2 max-w-[80%] ${
+              className={`flex items-start space-x-2 max-w-[80%] rounded-lg ${
                 message.role === "user"
-                  ? "bg-indigo-100 dark:bg-indigo-900/40 text-slate-800 dark:text-slate-200"
-                  : "bg-slate-100 dark:bg-slate-800/60 text-slate-800 dark:text-slate-200"
-              } p-3 rounded-lg`}
+                  ? "bg-primary/10 text-primary-foreground dark:bg-indigo-900/40 text-slate-800 dark:text-slate-200"
+                  : "glass-effect dark:bg-slate-800/60 text-slate-800 dark:text-slate-200"
+              } p-3 shadow-sm`}
             >
               <div className="flex-shrink-0 mt-0.5">
                 {message.role === "user" ? (
-                  <div className="bg-indigo-500 p-1 rounded-full">
+                  <div className="bg-primary p-1 rounded-full">
                     <User className="h-3 w-3 text-white" />
                   </div>
                 ) : (
-                  <div className="bg-green-500 dark:bg-green-600 p-1 rounded-full">
+                  <div className="bg-secondary dark:bg-secondary p-1 rounded-full">
                     <Bot className="h-3 w-3 text-white" />
                   </div>
                 )}
@@ -103,9 +103,9 @@ export function AIAssistant() {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-slate-100 dark:bg-slate-800/60 p-3 rounded-lg text-slate-800 dark:text-slate-200">
+            <div className="glass-effect dark:bg-slate-800/60 p-3 rounded-lg text-slate-800 dark:text-slate-200">
               <div className="flex items-center space-x-2">
-                <div className="bg-green-500 dark:bg-green-600 p-1 rounded-full">
+                <div className="bg-secondary dark:bg-secondary p-1 rounded-full">
                   <Bot className="h-3 w-3 text-white" />
                 </div>
                 <div className="flex space-x-1">
@@ -124,14 +124,14 @@ export function AIAssistant() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask anything about your courses..."
-            className="flex-1 bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700"
+            className="flex-1 bg-white/70 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700"
             disabled={isLoading}
           />
           <Button 
             type="submit" 
             size="icon" 
             disabled={isLoading || !input.trim()}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white"
+            className="bg-primary hover:bg-primary/90 text-white shadow-sm"
           >
             <Send className="h-4 w-4" />
           </Button>
