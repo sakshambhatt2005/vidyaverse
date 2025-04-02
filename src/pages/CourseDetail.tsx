@@ -5,7 +5,16 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, CheckCircle, ChevronLeft, Clock, Star, Users, Video } from "lucide-react";
+import { 
+  BookOpen, 
+  CheckCircle, 
+  ChevronLeft, 
+  Clock, 
+  MessageCircle, 
+  Star, 
+  Users, 
+  Video 
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const courseData = {
