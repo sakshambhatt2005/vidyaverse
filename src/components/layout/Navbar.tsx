@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BookOpen, Menu, MessageSquare, Home, BookmarkIcon, BrainCircuit, UserCircle, X } from "lucide-react";
 import { ThemeToggle } from "../ui/ThemeToggle";
@@ -6,18 +7,32 @@ import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   const navigation = [
-    { name: "Dashboard", href: "/", icon: Home },
+    { name: "Home", href: "/", icon: Home },
     { name: "Courses", href: "/courses", icon: BookOpen },
     { name: "Knowledge Hub", href: "/knowledge-hub", icon: BookmarkIcon },
     { name: "Quizzes", href: "/quizzes", icon: BrainCircuit },
     { name: "Forum", href: "/forum", icon: MessageSquare },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+      isScrolled 
+        ? "bg-white/95 dark:bg-slate-900/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/60 border-b border-slate-200/70 dark:border-slate-700/30" 
+        : "bg-transparent"
+    }`}>
       <div className="container flex h-16 items-center">
         <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-2">
@@ -69,7 +84,7 @@ export function Navbar() {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden animate-fade-in">
           <div className="space-y-1 px-2 pb-3 pt-2">
             {navigation.map((item) => {
               const isActive = location.pathname === item.href;
