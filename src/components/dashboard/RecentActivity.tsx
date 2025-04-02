@@ -36,20 +36,23 @@ export function RecentActivity({ activities }: RecentActivityProps) {
   };
 
   return (
-    <div className="dashboard-card">
-      <h2 className="mb-4 text-xl font-semibold">Recent Activity</h2>
+    <div className="rounded-xl bg-white dark:bg-slate-800/60 shadow-md border border-slate-200/70 dark:border-slate-700/50 p-6">
+      <h2 className="mb-4 text-xl font-semibold text-slate-800 dark:text-slate-200">Recent Activity</h2>
       <div className="space-y-3">
         {activities.map((activity) => (
-          <div key={activity.id} className="flex items-start space-x-3 rounded-lg border p-3">
-            <div className="mt-0.5 rounded-full bg-muted p-1.5">
+          <div 
+            key={activity.id} 
+            className="flex items-start space-x-3 rounded-lg border border-slate-200/70 dark:border-slate-700/30 p-3 bg-white/50 dark:bg-slate-800/50 hover:shadow-sm transition-all duration-200"
+          >
+            <div className="mt-0.5 rounded-full bg-slate-100 dark:bg-slate-700 p-1.5">
               {getIconForActivity(activity.type)}
             </div>
             <div className="flex-1">
               <div className="flex justify-between">
-                <h3 className="font-medium">{activity.title}</h3>
-                <span className="text-xs text-muted-foreground">{activity.timestamp}</span>
+                <h3 className="font-medium text-slate-800 dark:text-slate-200">{activity.title}</h3>
+                <span className="text-xs text-slate-500 dark:text-slate-400">{activity.timestamp}</span>
               </div>
-              <p className="text-sm text-muted-foreground">{activity.description}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">{activity.description}</p>
             </div>
           </div>
         ))}
