@@ -70,7 +70,7 @@ export function AIAssistant() {
   };
 
   return (
-    <div className="flex flex-col h-[400px] max-h-[60vh] rounded-xl light:glass-card dark:bg-slate-800/30">
+    <div className="flex flex-col h-[400px] max-h-[60vh] rounded-xl bg-white/90 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/30 shadow-sm">
       <div className="flex-1 overflow-y-auto px-3 py-4 space-y-4">
         {messages.map((message, index) => (
           <div
@@ -83,7 +83,7 @@ export function AIAssistant() {
               className={`flex items-start space-x-2 max-w-[80%] rounded-lg ${
                 message.role === "user"
                   ? "bg-primary/10 text-primary-foreground dark:bg-indigo-900/40 text-slate-800 dark:text-slate-200"
-                  : "glass-effect dark:bg-slate-800/60 text-slate-800 dark:text-slate-200"
+                  : "bg-slate-100/90 dark:bg-slate-800/60 text-slate-800 dark:text-slate-200"
               } p-3 shadow-sm`}
             >
               <div className="flex-shrink-0 mt-0.5">
@@ -103,7 +103,7 @@ export function AIAssistant() {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="glass-effect dark:bg-slate-800/60 p-3 rounded-lg text-slate-800 dark:text-slate-200">
+            <div className="bg-slate-100/90 dark:bg-slate-800/60 p-3 rounded-lg text-slate-800 dark:text-slate-200">
               <div className="flex items-center space-x-2">
                 <div className="bg-secondary dark:bg-secondary p-1 rounded-full">
                   <Bot className="h-3 w-3 text-white" />

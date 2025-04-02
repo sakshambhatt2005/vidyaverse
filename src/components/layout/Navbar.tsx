@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, Menu, MessageSquare, Home, BookmarkIcon, BrainCircuit, Trophy, UserCircle, X } from "lucide-react";
+import { BookOpen, Menu, MessageSquare, Home, BookmarkIcon, BrainCircuit, UserCircle, X } from "lucide-react";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { Button } from "@/components/ui/button";
 
@@ -15,7 +14,6 @@ export function Navbar() {
     { name: "Knowledge Hub", href: "/knowledge-hub", icon: BookmarkIcon },
     { name: "Quizzes", href: "/quizzes", icon: BrainCircuit },
     { name: "Forum", href: "/forum", icon: MessageSquare },
-    { name: "Leaderboard", href: "/leaderboard", icon: Trophy },
   ];
 
   return (
